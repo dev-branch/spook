@@ -5,7 +5,17 @@ class ApplicationController < ActionController::Base
   private
 
   def get_user
-    @is_user = user_signed_in?
     @user = current_user
+    @is_auth = user_signed_in?
+    @is_user = @is_auth && @user.role == 'user'
+    @is_admin = @is_auth && @user.role == 'admin'
+  end
+
+  def auth_admin
+    redirect_to root_url if !@is_admin
+  end
+
+  def auth_user
+    redirect_to root_url if !@is_user
   end
 end
