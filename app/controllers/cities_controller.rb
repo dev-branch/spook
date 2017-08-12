@@ -2,6 +2,7 @@ class CitiesController < ApplicationController
   before_action :auth_admin
 
   def index
+    @cities = City.all
   end
 
   def new
@@ -12,7 +13,7 @@ class CitiesController < ApplicationController
     @city = City.new(params[:city].permit(:name, :country, :photo))
 
     if @city.save
-      redirect_to root_url
+      redirect_to cities_path
     else
       render 'new'
     end

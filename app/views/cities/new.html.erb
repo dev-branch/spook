@@ -1,37 +1,29 @@
-<h1 class="display-4">Add City</h1>
+<h1 class="display-4 p-2">Add City</h1>
 
 <div class="row">
   <div class="col-4">
     <%= form_with(model: @city, local: true) do |form| %>
-      <% if @city.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@city.errors.count, "error") %> prohibited this movie from being saved:</h2>
-          <ul>
-            <% @city.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
 
-    <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :city_name, class: 'form-control' %>
-    </div>
+      <%= render 'errors', object: @city %>
 
-    <div class="form-group">
-    <%= form.label :country %>
-    <%= form.text_field :country, id: :city_country, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :city_name, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-    <%= form.label :photo %>
-    <%= form.text_field :photo, id: :city_photo, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= form.label :country %>
+        <%= form.text_field :country, id: :city_country, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-    <%= form.submit class: 'btn btn-outline-primary' %>
-    </div>
+      <div class="form-group">
+        <%= form.label :photo %>
+        <%= form.text_field :photo, id: :city_photo, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.submit class: 'btn btn-outline-primary' %>
+      </div>
     <% end %>
   </div>
   <div class="col-8"></div>
