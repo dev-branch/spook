@@ -11,7 +11,7 @@
           <a class="nav-link" href="/users/edit">Profile</a>
         </li>
         <li class="nav-item">
-          <%= link_to @user.email, destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          <%= link_to "#{@user.email} - #{@user.role}", destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>
       <% else %>
         <li class="nav-item">
