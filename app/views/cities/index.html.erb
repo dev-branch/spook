@@ -3,6 +3,7 @@
 <table class="table table-striped">
   <thead class="thead-inverse">
     <tr>
+      <th></th>
       <th>Id</th>
       <th>Name</th>
       <th>Country</th>
@@ -12,6 +13,11 @@
   <tbody>
     <% @cities.each do |c| %>
       <tr>
+        <td>
+          <%= link_to city_path(c), method: :delete do %>
+            <i class="fa fa-trash-o"></i>
+          <% end %>
+        </td>
         <td><%= c.id %></td>
         <td><%= c.name %></td>
         <td><%= c.country %></td>

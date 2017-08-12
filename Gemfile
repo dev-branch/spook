@@ -33,6 +33,7 @@ gem 'devise'
 gem 'popper_js'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.beta'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'pry'
