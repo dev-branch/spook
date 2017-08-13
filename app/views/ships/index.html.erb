@@ -17,7 +17,7 @@
             <i class="fa fa-trash-o"></i>
           <% end %>
         </td>
-        <td><%= s.id %></td>
+        <td><%= link_to s.id, ship_path(s) %></td>
         <td><%= s.name %></td>
         <td><%= image_tag(s.photo, width: 75, height: 75, class: 'img-thumbnail') %></td>
         </tr>

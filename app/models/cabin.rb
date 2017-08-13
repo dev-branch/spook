@@ -14,5 +14,5 @@
 class Cabin < ApplicationRecord
   belongs_to :ship
   validates :room, :level, presence: true
-  validates :room, uniqueness: { scope: :level }
+  validates :room, uniqueness: { scope: [:level, :ship_id] }
 end

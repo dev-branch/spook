@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170813081954) do
     t.bigint "ship_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["room", "level"], name: "index_cabins_on_room_and_level", unique: true
+    t.index ["room", "level", "ship_id"], name: "index_cabins_on_room_and_level_and_ship_id", unique: true
     t.index ["ship_id"], name: "index_cabins_on_ship_id"
   end
 

@@ -9,6 +9,6 @@ class CreateCabins < ActiveRecord::Migration[5.1]
     end
 
     add_foreign_key :cabins, :ships
-    add_index :cabins, [:room, :level], unique: true
+    add_index :cabins, [:room, :level, :ship_id], unique: true
   end
 end
