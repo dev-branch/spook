@@ -11,6 +11,7 @@
 
 class Ship < ApplicationRecord
   has_many :cabins, dependent: :delete_all
+  has_many :cruises
   validates :name, :photo, presence: true
   validates :name, uniqueness: true
 end
