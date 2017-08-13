@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812045604) do
+ActiveRecord::Schema.define(version: 20170813081954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cabins", force: :cascade do |t|
+    t.string "room", null: false
+    t.string "level", null: false
+    t.boolean "is_available", default: true
+    t.bigint "ship_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room", "level"], name: "index_cabins_on_room_and_level", unique: true
+    t.index ["ship_id"], name: "index_cabins_on_ship_id"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
@@ -22,6 +33,14 @@ ActiveRecord::Schema.define(version: 20170812045604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_cities_on_name", unique: true
+  end
+
+  create_table "ships", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "photo", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_ships_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,4 +61,5 @@ ActiveRecord::Schema.define(version: 20170812045604) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cabins", "ships"
 end
