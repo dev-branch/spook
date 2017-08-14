@@ -1,0 +1,45 @@
+<h1 class="display-4 p-2">Cruise <%= @cruise.name %></h1>
+
+<div class='row'>
+  <div class='col-3'>
+    <div class='border border-danger rounded p-2 m-2'>
+      <%= form_with(url: add_date_cruise_path(@cruise), local: true, method: :patch) do |form| %>
+        <div class="form-group">
+          <%= form.label :date %>
+          <%= form.date_select :date, {}, {class: 'form-control'} %>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit 'Add Date', class: 'btn btn-outline-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class='col-3'>
+    <div class='border border-danger rounded p-2 m-2'>
+      <%= form_with(url: add_city_cruise_path(@cruise), local: true, method: :patch) do |form| %>
+        <div class="form-group">
+          <%= form.label :city_id %>
+          <%= form.collection_select(:city_id, @cities, :id, :name, {}, {class: 'form-control'}) %>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit 'Add City', class: 'btn btn-outline-success' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class='col-6'></div>
+</div>
+
+<ul>
+  <% @cruise.dates.each do |d| %>
+    <li><%= d %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @cruise.cities.each do |c| %>
+    <li><%= c.name %></li>
+  <% end %>
+</ul>
