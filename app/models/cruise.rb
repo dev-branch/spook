@@ -15,6 +15,8 @@
 class Cruise < ApplicationRecord
   belongs_to :ship
   has_and_belongs_to_many :cities
+  has_many :reservations
+  has_many :users, through: :reservations
   validates :name, presence: true
   validates :name, uniqueness: true
 end
