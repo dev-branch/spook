@@ -14,5 +14,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reservations
+  resources :reservations do
+    collection do
+      post '/select_cruise', to: 'reservations#select_cruise'
+    end
+  end
 end
